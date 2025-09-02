@@ -89,6 +89,11 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
   Using abstract base classes to formally define interfaces (e.g., `Flyable`, `Swimmable`) and ensure objects meet expected behaviors, rather than relying on implicit duck typing.  
   *See: [`AbstractBaseClasses/resolve_duck_typing.py`](AbstractBaseClasses/resolve_duck_typing.py)*
 
+- **Plugin Architecture with ABCs:**  
+  Designing a plugin system using abstract base classes to enforce a consistent interface for plugins (e.g., `name`, `version`, `initialize`, `execute`, `cleanup`).  
+  Demonstrates plugin registration, management, and usage.  
+  *See: [`AbstractBaseClasses/plugin_architecture.py`](AbstractBaseClasses/plugin_architecture.py)*
+
 ---
 
 More advanced Python concepts will be added soon.  
