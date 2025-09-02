@@ -81,6 +81,10 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
 - **Usage Example:**  
   Demonstrating polymorphism by operating on different vehicle types (Car, Bicycle) through a common interface.
 
+- **Abstract Properties:**  
+  Using abstract properties and property setters to enforce that subclasses provide specific attributes and their validation logic.  
+  *See: [`AbstractBaseClasses/abstract_properties.py`](AbstractBaseClasses/abstract_properties.py)*
+
 ---
 
 More advanced Python concepts will be added soon.  
