@@ -85,6 +85,10 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
   Using abstract properties and property setters to enforce that subclasses provide specific attributes and their validation logic.  
   *See: [`AbstractBaseClasses/abstract_properties.py`](AbstractBaseClasses/abstract_properties.py)*
 
+- **Resolving Duck Typing with ABCs:**  
+  Using abstract base classes to formally define interfaces (e.g., `Flyable`, `Swimmable`) and ensure objects meet expected behaviors, rather than relying on implicit duck typing.  
+  *See: [`AbstractBaseClasses/resolve_duck_typing.py`](AbstractBaseClasses/resolve_duck_typing.py)*
+
 ---
 
 More advanced Python concepts will be added soon.  
