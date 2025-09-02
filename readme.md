@@ -27,10 +27,14 @@ They are most commonly used for advanced patterns such as enforcing singletons, 
   Using a function as a metaclass to intercept and debug class creation.  
   *See: [`MetaClasses/custom_metaclasses.py`](MetaClasses/custom_metaclasses.py)*
 
+- **Enforcing Coding Standards with Metaclass:**  
+  Creating a custom metaclass to enforce naming conventions for class attributes and methods (e.g., constants in UPPER_CASE, methods in snake_case).  
+  *See: [`MetaClasses/coding_standards.py`](MetaClasses/coding_standards.py)*
+
 ---
 
 More advanced Python concepts will be added soon.  
 Feel free to explore, modify, and experiment with the code as you deepen your understanding of Python!
 
 ---
-**Note:** This repository is for educational and personal learning
+**Note:** This repository is for educational and personal learning purposes.
