@@ -94,6 +94,12 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
   Demonstrates plugin registration, management, and usage.  
   *See: [`AbstractBaseClasses/plugin_architecture.py`](AbstractBaseClasses/plugin_architecture.py)*
 
+- **Data Processing Pipeline with ABCs:**  
+  Demonstrates how to use abstract base classes to build a flexible data processing pipeline.  
+  Each processor (e.g., `TextProcessor`, `NumberProcessor`, `ListProcessor`) inherits from a common abstract base and implements its own validation and processing logic.  
+  The pipeline automatically selects the appropriate processor for each data item, ensuring type safety and extensibility.  
+  *See: [`AbstractBaseClasses/data_processing_pipeline.py`](AbstractBaseClasses/data_processing_pipeline.py)*
+
 ---
 
 More advanced Python concepts will be added soon.  
