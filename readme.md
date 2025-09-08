@@ -139,6 +139,11 @@ Dataclasses, introduced in Python 3.7, provide a decorator and functions for aut
   Shows how to use the `@dataclass` decorator to automatically generate these methods, making code more concise and readable.  
   *See: [`DataClasses/dataclass_solution.py`](DataClasses/dataclass_solution.py)*
 
+- **Dataclass Parameters and Customization:**  
+  Explores all the parameters available in the `@dataclass` decorator, such as `init`, `repr`, `eq`, `order`, `frozen`, `unsafe_hash`, `slots`, and more.  
+  Demonstrates how each parameter affects the generated class, including immutability, ordering, hashability, and keyword-only fields.  
+  *See: [`DataClasses/dataclass_parameters.py`](DataClasses/dataclass_parameters.py)*
+
 - **Hashability and Equality:**  
   Explains why implementing both `__eq__` and `__hash__` is important for using custom objects in sets and as dictionary keys.
 
