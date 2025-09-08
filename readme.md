@@ -100,6 +100,27 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
   The pipeline automatically selects the appropriate processor for each data item, ensuring type safety and extensibility.  
   *See: [`AbstractBaseClasses/data_processing_pipeline.py`](AbstractBaseClasses/data_processing_pipeline.py)*
 
+#### When to Use ABCs in Real Projects
+
+**✅ Use ABCs When:**
+- Framework Development: Building libraries or frameworks where you need to define clear contracts
+- Plugin Systems: When multiple developers need to implement the same interface
+- Template Method Pattern: When you have algorithms with varying steps
+- Team Development: Large teams need clear specifications
+- API Design: Defining consistent interfaces for external consumption
+- Polymorphism: When you need to treat different objects uniformly
+
+**❌ Avoid ABCs When:**
+- Simple Scripts: Overkill for small, straightforward programs
+- Duck Typing Suffices: When the informal protocol is clear and stable
+- Single Implementation: When you're only going to have one implementation
+- Rapid Prototyping: When flexibility is more important than structure
+- Python's Built-in Protocols: When existing protocols (like `__len__`, `__iter__`) are sufficient
+
+**Summary**  
+ABCs help enforce consistent interfaces and design contracts, making codebases more maintainable and robust.  
+Use them when structure and clarity are important, but avoid unnecessary complexity for simple or rapidly evolving code.
+
 ---
 
 More advanced Python concepts will be added soon.  
