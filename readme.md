@@ -8,7 +8,8 @@ Each section introduces a new topic, explains its significance, and provides pra
 
 1. [Metaclasses](#1-metaclasses)
 2. [Abstract Base Classes](#2-abstract-base-classes)
-3. More topics coming soon...
+3. [Dataclasses](#3-dataclasses)
+4. More topics coming soon...
 
 ---
 
@@ -120,6 +121,26 @@ ABCs are a way to define interfaces in Python. They allow you to specify methods
 **Summary**  
 ABCs help enforce consistent interfaces and design contracts, making codebases more maintainable and robust.  
 Use them when structure and clarity are important, but avoid unnecessary complexity for simple or rapidly evolving code.
+
+---
+
+## 3. Dataclasses
+
+**What are Dataclasses?**  
+Dataclasses, introduced in Python 3.7, provide a decorator and functions for automatically adding special methods to user-defined classes. They simplify the creation of classes that primarily store data, reducing boilerplate code for methods like `__init__`, `__repr__`, `__eq__`, and `__hash__`.
+
+**What we've covered in code:**
+
+- **Traditional Data Class Implementation:**  
+  Demonstrates how to manually implement a data-holding class with custom `__init__`, `__repr__`, `__eq__`, and `__hash__` methods.  
+  *See: [`DataClasses/traditional.py`](DataClasses/traditional.py)*
+
+- **Dataclass-based Implementation:**  
+  Shows how to use the `@dataclass` decorator to automatically generate these methods, making code more concise and readable.  
+  *See: [`DataClasses/dataclass_solution.py`](DataClasses/dataclass_solution.py)*
+
+- **Hashability and Equality:**  
+  Explains why implementing both `__eq__` and `__hash__` is important for using custom objects in sets and as dictionary keys.
 
 ---
 
