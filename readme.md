@@ -186,6 +186,19 @@ Dataclasses, introduced in Python 3.7, provide a decorator and functions for aut
   - Managing mutable fields like lists and dicts safely.
   - Customizing how fields are displayed and compared.
 
+- **Strict Enforcement of Dataclasses:**  
+  Explains how Python's dataclasses do not enforce type hints at runtime by default, and demonstrates several ways to add strict type checking:
+  - Using static type checkers (e.g., mypy, pyright, IDE support) for compile-time safety.
+  - Adding runtime validation in the `__post_init__` method to check types and raise errors.
+  - Leveraging third-party libraries like `pydantic` and `attrs` for automatic validation and type enforcement.
+  - Using decorators like `beartype` for runtime enforcement of type hints.
+  *See: [`DataClasses/strict_enforcement_dataclasses.py`](DataClasses/strict_enforcement_dataclasses.py)*
+
+  This example demonstrates:
+  - The difference between type hints and actual runtime enforcement.
+  - How to catch type errors early, both statically and dynamically.
+  - How to integrate dataclasses with popular validation libraries for robust data modeling.
+
 ---
 
 More advanced Python concepts will be added soon.  
