@@ -166,6 +166,26 @@ Dataclasses, introduced in Python 3.7, provide a decorator and functions for aut
   - How to measure the true memory footprint of Python objects and containers using `sys.getsizeof()` and `pympler.asizeof`.
   - Why `__slots__` can make objects more memory-efficient by removing the per-instance `__dict__`.
 
+- **Field Function and Default Factories:**  
+  Explains why mutable default values (like lists or dicts) should not be used directly in dataclass fields, and how to use `field(default_factory=...)` to safely create new instances for each object.  
+  *See: [`DataClasses/field_function.py`](DataClasses/field_function.py)*
+
+  This example demonstrates:
+  - The dangers of using mutable defaults in dataclasses (shared state across instances).
+  - How `field(default_factory=...)` solves this by creating a new object for each instance.
+  - The code generation logic Python uses for dataclass fields with defaults and factories.
+
+- **Advanced Field Parameters:**  
+  Shows how to use advanced features of the `field()` function, such as `default_factory`, `repr`, `compare`, and `init`, to customize dataclass behavior.  
+  *See: [`DataClasses/field_fxn_parameters.py`](DataClasses/field_fxn_parameters.py)*
+
+  This example demonstrates:
+  - Automatically generating unique IDs and timestamps for each instance.
+  - Excluding fields from `repr` and comparisons.
+  - Creating fields that are initialized in `__post_init__` rather than the constructor.
+  - Managing mutable fields like lists and dicts safely.
+  - Customizing how fields are displayed and compared.
+
 ---
 
 More advanced Python concepts will be added soon.  
