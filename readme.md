@@ -140,12 +140,31 @@ Dataclasses, introduced in Python 3.7, provide a decorator and functions for aut
   *See: [`DataClasses/dataclass_solution.py`](DataClasses/dataclass_solution.py)*
 
 - **Dataclass Parameters and Customization:**  
-  Explores all the parameters available in the `@dataclass` decorator, such as `init`, `repr`, `eq`, `order`, `frozen`, `unsafe_hash`, `slots`, and more.  
-  Demonstrates how each parameter affects the generated class, including immutability, ordering, hashability, and keyword-only fields.  
+  Explores all the parameters available in the `@dataclass` decorator, such as:
+  - `init`: Controls generation of `__init__`
+  - `repr`: Controls generation of `__repr__`
+  - `eq`: Controls generation of `__eq__`
+  - `order`: Enables comparison operators
+  - `frozen`: Makes instances immutable
+  - `unsafe_hash`: Controls hash generation
+  - `slots`: Enables memory-efficient storage
+  - `kw_only`, `match_args`, `weakref_slot`: Advanced features for keyword-only fields, pattern matching, and weak references  
+  Demonstrates how each parameter affects the generated class, including immutability, ordering, hashability, and memory usage.  
   *See: [`DataClasses/dataclass_parameters.py`](DataClasses/dataclass_parameters.py)*
 
 - **Hashability and Equality:**  
   Explains why implementing both `__eq__` and `__hash__` is important for using custom objects in sets and as dictionary keys.
+
+- **Slots for Memory Management:**  
+  Shows how using `slots=True` in dataclasses can reduce memory usage and restrict dynamic attribute creation.  
+  *See: [`DataClasses/slots_parameter_memory_mngmt.py`](DataClasses/slots_parameter_memory_mngmt.py)*
+
+  This example demonstrates:
+  - How Python objects are represented in memory using `ctypes`.
+  - How reference counting works in CPython and its impact on garbage collection.
+  - The effect of `sys.getrefcount()` and why some objects (like small integers) are "immortal" in Python 3.11+.
+  - How to measure the true memory footprint of Python objects and containers using `sys.getsizeof()` and `pympler.asizeof`.
+  - Why `__slots__` can make objects more memory-efficient by removing the per-instance `__dict__`.
 
 ---
 

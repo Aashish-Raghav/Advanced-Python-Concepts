@@ -177,3 +177,58 @@ for student in sorted_students:
 alice = Student("Alice", 3.8, 22)
 bob = Student("Bob", 3.6, 21)
 print(alice > bob)  # False (Alice comes before Bob alphabetically)
+print(f"\n")
+
+
+# -------------------------------------------------------------------
+# slots parameter
+
+@dataclass(slots=True)
+class EfficientPoint:
+    x: float
+    y: float
+
+@dataclass(slots=False)  # Default
+class RegularPoint:
+    x: float
+    y: float
+
+from pympler import asizeof # type: ignore
+
+efficient = EfficientPoint(1.0, 2.0)
+regular = RegularPoint(1.0, 2.0)
+
+print(asizeof.asizeof(efficient))  # e.g., ~56 bytes
+print(asizeof.asizeof(regular))    # e.g., ~112 bytes
+
+
+# With slots, you can't add new attributes dynamically
+try:
+    efficient.z = 3.0  # This will raise AttributeError
+except AttributeError as e:
+    print(f"Slots restriction: {e}")
+
+# Regular dataclass allows dynamic attributes
+regular.z = 3.0  # This works
+print(regular.z)  # 3.0
+
+
+'''
+RegularPoint object
+ ├── header (refcount, type)
+ ├── pointer to dict ----------------┐
+                                     │
+dict (hash table)                    │
+ ├── entry: "x" → pointer ---------->│ int(1)
+ ├── entry: "y" → pointer ---------->│ int(2)
+'''
+
+# vs
+
+'''
+EfficientPoint object
+ ├── header (refcount, type)
+ ├── slot[0] → pointer -------------> int(1)
+ ├── slot[1] → pointer -------------> int(2)
+
+'''
