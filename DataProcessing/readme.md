@@ -106,3 +106,28 @@ Metaclass rules will enforce these requirements.
 ## License
 
 For educational and personal learning
+
+---
+
+## Testing
+
+A comprehensive test suite is provided in [`tests/test_data_processing.py`](tests/test_data_processing.py):
+
+- **Unit Tests:**  
+  Covers all core classes (`ProcessorConfig`, `ProcessingResult`, `DataProcessor`, `NumericProcessor`).
+- **Integration Tests:**  
+  Validates the complete workflow from configuration to result.
+- **Error Handling:**  
+  Tests custom exceptions for validation, processing, and configuration errors.
+- **Metaclass Enforcement:**  
+  Ensures processor classes follow naming, attribute, and method rules.
+- **Logging:**  
+  Verifies logging functionality and output.
+
+**How to run the tests:**
+
+```bash
+python -m unittest tests.test_data_processing -v
+```
+
+---
