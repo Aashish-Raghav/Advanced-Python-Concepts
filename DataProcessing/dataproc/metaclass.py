@@ -1,4 +1,4 @@
-from abc import ABCMeta
+from abc import ABC, ABCMeta
 
 from .exceptions import ValidationError
 from .logging import logger
@@ -19,12 +19,12 @@ class ProcessorMeta(ABCMeta):
         cls = super().__new__(mcs, name, bases, attrs)
 
         # skip validation for abstract base classes
-        if getattr(cls, "__abstractmethods__", None):
+        if any(base is ABC for base in bases):
             logger.debug(f"Skipping Validation for abstract class {name}")
             return cls
 
         # Rule 1
-        if not callable(getattr(cls, "process", None)):
+        if "process" in getattr(cls, "__abstractmethods__", set()):
             raise ValidationError(f"Class {name} must implement 'process' method")
 
         # Rule 2
@@ -35,7 +35,7 @@ class ProcessorMeta(ABCMeta):
 
         # Rule 3
         if not name.endswith("Processor"):
-            raise ValidationError(f"Class {name} must end with with 'Processor'")
+            raise ValidationError(f"Class {name} must end with 'Processor'")
 
         logger.debug(f"Validated processor class {name}")
         return cls
