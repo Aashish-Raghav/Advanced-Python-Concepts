@@ -10,7 +10,8 @@ Each section introduces a new topic, explains its significance, and provides pra
 2. [Abstract Base Classes](#2-abstract-base-classes)
 3. [Dataclasses](#3-dataclasses)
 4. [Data Processing Library Example](#4-data-processing-library-example)
-5. More topics coming soon...
+5. [Asyncio](#5-asyncio)
+6. More topics coming soon...
 
 ---
 
@@ -273,6 +274,46 @@ python -m unittest tests.test_data_processing -v
 
 **Summary:**  
 The DataProcessing library is a practical demonstration of how advanced Python features can be used together to create clean, extensible, and production-ready code. Explore the codebase to see these concepts in action!
+
+---
+
+## 5. Asyncio
+
+**What is Asyncio?**  
+Asyncio is Python’s built-in library for asynchronous programming, enabling concurrent code execution using coroutines, tasks, and an event loop. It’s ideal for **I/O-bound** and high-level structured network code.
+
+- Single Threaded
+- **Cooperative** Multitasking
+
+**Core Concepts:**
+
+1. **Event Loop:**  
+   The “engine” that drives asyncio.  
+   Runs coroutines, schedules tasks, and handles I/O events.
+
+2. **Coroutine:**  
+   A function defined with `async def` that can be paused and resumed.  
+   Runs until it awaits something (another coroutine, a Future, or I/O).
+
+3. **Await:**  
+   Suspends the coroutine until the awaited object completes.  
+   Must be used inside `async def`.
+
+4. **Task:**  
+   A wrapper around a coroutine, scheduled on the event loop.  
+   Runs concurrently with other tasks.  
+   Created with `asyncio.create_task(coro)`.
+
+5. **Future:**  
+   A low-level object representing a result not yet available.  
+   Usually returned by asyncio APIs.
+
+**Relationship:**  
+Event Loop manages Tasks → Tasks wrap Coroutines → Coroutines use await →  
+await works on awaitables (coroutines, tasks, futures)
+
+**Code Example:**  
+See [`Asyncio/basics.py`](Asyncio/basics.py) for practical demonstrations of coroutines, tasks, futures, and the event loop.
 
 ---
 
