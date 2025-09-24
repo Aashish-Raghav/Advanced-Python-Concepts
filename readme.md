@@ -280,40 +280,49 @@ The DataProcessing library is a practical demonstration of how advanced Python f
 ## 5. Asyncio
 
 **What is Asyncio?**  
-Asyncio is Python’s built-in library for asynchronous programming, enabling concurrent code execution using coroutines, tasks, and an event loop. It’s ideal for **I/O-bound** and high-level structured network code.
+Asyncio is Python’s built-in library for asynchronous programming, enabling concurrent code execution using coroutines, tasks, and an event loop. It’s ideal for I/O-bound and high-level structured network code.
 
-- Single Threaded
-- **Cooperative** Multitasking
+**What we've covered in code:**
 
-**Core Concepts:**
+- **Core Concepts and Basics:**  
+  - **Event Loop:** The engine that drives asyncio, running coroutines, scheduling tasks, and handling I/O events.
+  - **Coroutine:** Functions defined with `async def` that can be paused and resumed.
+  - **Await:** Suspends the coroutine until the awaited object completes.
+  - **Task:** A wrapper around a coroutine, scheduled on the event loop and running concurrently.
+  - **Future:** A low-level object representing a result not yet available.
+  - **Relationship:** Event Loop manages Tasks → Tasks wrap Coroutines → Coroutines use await → await works on awaitables (coroutines, tasks, futures).
+  *See: [`Asyncio/basics.py`](Asyncio/basics.py)*
 
-1. **Event Loop:**  
-   The “engine” that drives asyncio.  
-   Runs coroutines, schedules tasks, and handles I/O events.
+- **Advanced Asyncio APIs and Concurrency Primitives:**  
+  - **Queue:** For producer-consumer patterns and message passing between coroutines.
+  - **Lock:** Ensures mutual exclusion for shared resources.
+  - **Event:** Signals and synchronizes between coroutines.
+  - **Semaphore:** Limits concurrency, controlling how many coroutines run simultaneously.
+  - **Multiple Task Scheduling:** Demonstrates running multiple tasks concurrently with `asyncio.gather`.
+  *See: [`Asyncio/asyncio_api_s.py`](Asyncio/asyncio_api_s.py)*
 
-2. **Coroutine:**  
-   A function defined with `async def` that can be paused and resumed.  
-   Runs until it awaits something (another coroutine, a Future, or I/O).
+**How to Run Demos:**  
+Uncomment the desired demo in `asyncio_api_s.py` and run:
+```bash
+python Asyncio/asyncio_api_s.py
+```
 
-3. **Await:**  
-   Suspends the coroutine until the awaited object completes.  
-   Must be used inside `async def`.
+#### When to Use Asyncio in Real Projects
 
-4. **Task:**  
-   A wrapper around a coroutine, scheduled on the event loop.  
-   Runs concurrently with other tasks.  
-   Created with `asyncio.create_task(coro)`.
+**✅ Use Asyncio When:**
+- Building network servers, clients, or web frameworks
+- Handling many simultaneous I/O-bound tasks (HTTP requests, sockets, file operations)
+- Creating producer-consumer pipelines or concurrent workflows
+- You need scalable concurrency without threads
 
-5. **Future:**  
-   A low-level object representing a result not yet available.  
-   Usually returned by asyncio APIs.
+**❌ Avoid Asyncio When:**
+- Your workload is CPU-bound (use multiprocessing or threading)
+- You need true parallelism (asyncio is single-threaded)
+- Simpler synchronous code suffices
 
-**Relationship:**  
-Event Loop manages Tasks → Tasks wrap Coroutines → Coroutines use await →  
-await works on awaitables (coroutines, tasks, futures)
-
-**Code Example:**  
-See [`Asyncio/basics.py`](Asyncio/basics.py) for practical demonstrations of coroutines, tasks, futures, and the event loop.
+**Summary**  
+Asyncio provides powerful tools for writing concurrent, scalable, and efficient Python code.  
+It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency and synchronization.
 
 ---
 
