@@ -321,6 +321,13 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **Best Practices:** Prefer cooperative shutdown signals over abrupt cancellation; always clean up resources.
   *See: [`Asyncio/cancellation_patterns.py`](Asyncio/cancellation_patterns.py)*
 
+- **Streaming Patterns:**  
+  Explores asynchronous iteration and data streaming:
+  - **Async Iterator:** Lazily generates values on demand, preserves sequence, and supports stateful logic.
+  - **Async Generator:** Streams data using `yield` in an async context, supports multiple consumption patterns (`async for`, `__anext__`, `asend`, comprehensions).
+  - **Comparison:** Highlights differences between async iterators/generators and coordination patterns like `as_completed`.
+  *See: [`Asyncio/streaming_patterns.py`](Asyncio/streaming_patterns.py)*
+
 **How to Run Demos:**  
 Uncomment the desired demo in any of the files above and run:
 ```bash
@@ -328,6 +335,7 @@ python Asyncio/event_loop.py
 python Asyncio/concurrency_primitives.py
 python Asyncio/coordination_patterns.py
 python Asyncio/cancellation_patterns.py
+python Asyncio/streaming_patterns.py
 ```
 
 #### When to Use Asyncio in Real Projects
@@ -336,6 +344,7 @@ python Asyncio/cancellation_patterns.py
 - Building network servers, clients, or web frameworks
 - Handling many simultaneous I/O-bound tasks (HTTP requests, sockets, file operations)
 - Creating producer-consumer pipelines or concurrent workflows
+- Streaming data or processing events as they arrive
 - You need scalable concurrency without threads
 
 **❌ Avoid Asyncio When:**
@@ -345,7 +354,7 @@ python Asyncio/cancellation_patterns.py
 
 **Summary**  
 Asyncio provides powerful tools for writing concurrent, scalable, and efficient Python code.  
-It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency, synchronization, and graceful cancellation.
+It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency, synchronization, streaming, and graceful cancellation.
 
 ---
 
