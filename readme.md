@@ -314,12 +314,20 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **timeout:** Handle timeouts for long-running tasks.
   *See: [`Asyncio/coordination_patterns.py`](Asyncio/coordination_patterns.py)*
 
+- **Cancellation Patterns:**  
+  Demonstrates best practices for cancelling and cleaning up asyncio tasks:
+  - **Basic Cancellation:** How to cancel a running task and handle cleanup using `asyncio.CancelledError`.
+  - **Graceful Shutdown:** Using an `Event` to signal workers to stop, allowing for cooperative and clean shutdown before forced cancellation.
+  - **Best Practices:** Prefer cooperative shutdown signals over abrupt cancellation; always clean up resources.
+  *See: [`Asyncio/cancellation_patterns.py`](Asyncio/cancellation_patterns.py)*
+
 **How to Run Demos:**  
 Uncomment the desired demo in any of the files above and run:
 ```bash
 python Asyncio/event_loop.py
 python Asyncio/concurrency_primitives.py
 python Asyncio/coordination_patterns.py
+python Asyncio/cancellation_patterns.py
 ```
 
 #### When to Use Asyncio in Real Projects
@@ -337,7 +345,7 @@ python Asyncio/coordination_patterns.py
 
 **Summary**  
 Asyncio provides powerful tools for writing concurrent, scalable, and efficient Python code.  
-It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency and synchronization.
+It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency, synchronization, and graceful cancellation.
 
 ---
 
