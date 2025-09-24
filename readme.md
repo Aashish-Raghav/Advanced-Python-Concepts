@@ -328,6 +328,14 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **Comparison:** Highlights differences between async iterators/generators and coordination patterns like `as_completed`.
   *See: [`Asyncio/streaming_patterns.py`](Asyncio/streaming_patterns.py)*
 
+- **Task Groups:**  
+  Demonstrates structured concurrency in Python 3.11+ using `asyncio.TaskGroup`:
+  - **TaskGroup:** Provides a context manager for grouping tasks, ensuring all tasks are managed and cleaned up together.
+  - **Exception Handling:** Uses `ExceptionGroup` for fail-fast error propagation and collective exception handling.
+  - **Comparison:** Shows differences between `asyncio.gather` (older API) and `TaskGroup` (newer, more structured API).
+  - **Best Practices:** Prefer `TaskGroup` for robust, maintainable concurrent code in modern Python.
+  *See: [`Asyncio/task_groups.py`](Asyncio/task_groups.py)*
+
 **How to Run Demos:**  
 Uncomment the desired demo in any of the files above and run:
 ```bash
@@ -336,6 +344,7 @@ python Asyncio/concurrency_primitives.py
 python Asyncio/coordination_patterns.py
 python Asyncio/cancellation_patterns.py
 python Asyncio/streaming_patterns.py
+python Asyncio/task_groups.py
 ```
 
 #### When to Use Asyncio in Real Projects
