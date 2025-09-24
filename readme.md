@@ -301,6 +301,15 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **Multiple Task Scheduling:** Demonstrates running multiple tasks concurrently with `asyncio.gather`.
   *See: [`Asyncio/asyncio_api_s.py`](Asyncio/asyncio_api_s.py)*
 
+- **Coordination Patterns:**  
+  Demonstrates higher-level coordination and control of concurrent tasks:
+  - **as_completed:** Process tasks as they finish, regardless of order.
+  - **gather:** Run multiple tasks concurrently and collect all results.
+  - **wait / wait_for:** Wait for tasks with flexible completion or timeout conditions.
+  - **shield:** Protect critical tasks from cancellation by parent coroutines.
+  - **timeout:** Handle timeouts for long-running tasks.
+  *See: [`Asyncio/asyncio_api_s.py`](Asyncio/asyncio_api_s.py)*
+
 **How to Run Demos:**  
 Uncomment the desired demo in `asyncio_api_s.py` and run:
 ```bash
