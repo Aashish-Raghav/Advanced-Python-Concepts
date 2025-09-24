@@ -293,13 +293,17 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **Relationship:** Event Loop manages Tasks → Tasks wrap Coroutines → Coroutines use await → await works on awaitables (coroutines, tasks, futures).
   *See: [`Asyncio/basics.py`](Asyncio/basics.py)*
 
-- **Advanced Asyncio APIs and Concurrency Primitives:**  
-  - **Queue:** For producer-consumer patterns and message passing between coroutines.
+- **Event Loop Usage:**  
+  Demonstrates different ways to run coroutines and schedule tasks, including direct execution, task creation, and running multiple tasks concurrently.
+  *See: [`Asyncio/event_loop.py`](Asyncio/event_loop.py)*
+
+- **Concurrency Primitives:**  
+  Shows how to coordinate and synchronize coroutines using:
+  - **Queue:** Producer-consumer patterns and message passing.
   - **Lock:** Ensures mutual exclusion for shared resources.
   - **Event:** Signals and synchronizes between coroutines.
   - **Semaphore:** Limits concurrency, controlling how many coroutines run simultaneously.
-  - **Multiple Task Scheduling:** Demonstrates running multiple tasks concurrently with `asyncio.gather`.
-  *See: [`Asyncio/asyncio_api_s.py`](Asyncio/asyncio_api_s.py)*
+  *See: [`Asyncio/concurrency_primitives.py`](Asyncio/concurrency_primitives.py)*
 
 - **Coordination Patterns:**  
   Demonstrates higher-level coordination and control of concurrent tasks:
@@ -308,12 +312,14 @@ Asyncio is Python’s built-in library for asynchronous programming, enabling co
   - **wait / wait_for:** Wait for tasks with flexible completion or timeout conditions.
   - **shield:** Protect critical tasks from cancellation by parent coroutines.
   - **timeout:** Handle timeouts for long-running tasks.
-  *See: [`Asyncio/asyncio_api_s.py`](Asyncio/asyncio_api_s.py)*
+  *See: [`Asyncio/coordination_patterns.py`](Asyncio/coordination_patterns.py)*
 
 **How to Run Demos:**  
-Uncomment the desired demo in `asyncio_api_s.py` and run:
+Uncomment the desired demo in any of the files above and run:
 ```bash
-python Asyncio/asyncio_api_s.py
+python Asyncio/event_loop.py
+python Asyncio/concurrency_primitives.py
+python Asyncio/coordination_patterns.py
 ```
 
 #### When to Use Asyncio in Real Projects
