@@ -11,7 +11,8 @@ Each section introduces a new topic, explains its significance, and provides pra
 3. [Dataclasses](#3-dataclasses)
 4. [Data Processing Library Example](#4-data-processing-library-example)
 5. [Asyncio](#5-asyncio)
-6. More topics coming soon...
+6. [Async Fetcher Library Example](#6-asyncfetcher-asynchronous-http-fetching-library)
+7. More topics coming soon...
 
 ---
 
@@ -366,6 +367,78 @@ Asyncio provides powerful tools for writing concurrent, scalable, and efficient 
 It is best suited for I/O-bound and event-driven applications, and its primitives allow fine-grained control over concurrency, synchronization, streaming, and graceful cancellation.
 
 ---
+## 6. AsyncFetcher: Asynchronous HTTP Fetching Library
+
+**What is AsyncFetcher?**  
+AsyncFetcher is a modular Python library for high-performance, concurrent HTTP requests using `asyncio` and `aiohttp`.  
+It demonstrates advanced async patterns, resource management, error handling, and logging in a real-world scenario.
+
+**What we've covered in code:**
+
+- **Async Context Management:**  
+  Uses `async with` for safe resource acquisition and cleanup of HTTP sessions.
+- **Concurrency Control:**  
+  Limits concurrent requests with `asyncio.Semaphore` for efficient and safe parallelism.
+- **Retry and Timeout Logic:**  
+  Implements robust retry strategies with exponential backoff and per-request timeouts.
+- **Custom Data Models:**  
+  Uses dataclasses (`HTTPRequest`, `HTTPResponse`) for clear, type-safe request/response handling.
+- **Structured Logging:**  
+  Logs to both console and file with detailed status, warnings, and errors.
+- **Error Handling:**  
+  Handles HTTP errors, timeouts, and unexpected exceptions gracefully, with statistics and reporting.
+- **Batch Fetching:**  
+  Fetches multiple URLs concurrently and aggregates results, separating successes and failures.
+
+**Project Structure:**
+```
+AsyncFetcher/
+│
+├── main.py                      # Example usage script
+├── fetcher/
+│   ├── __init__.py
+│   ├── dataclass.py             # HTTPRequest and HTTPResponse dataclasses
+│   ├── fetch.py                 # AsyncHTTPFetcher core logic
+│   ├── logging.py               # Logging setup
+│   └── __pycache__/
+└── tests/
+```
+
+**Usage Example:**
+```python
+import asyncio
+from fetcher.fetch import AsyncHTTPFetcher
+from fetcher.dataclass import HTTPRequest
+
+async def http_fetcher_example():
+    requests = [
+        HTTPRequest("https://httpbin.org/delay/1"),
+        HTTPRequest("https://httpbin.org/status/200"),
+        HTTPRequest("https://httpbin.org/json"),
+        HTTPRequest("https://httpbin.org/status/404"),  # Will fail
+        HTTPRequest("https://httpbin.org/status/500"),  # Will retry
+    ]
+
+    async with AsyncHTTPFetcher(max_concurrent=3) as fetcher:
+        results = await fetcher.fetch_all(requests)
+        print(f"\nSuccessful responses: {len(results)}")
+        for result in results:
+            print(f"- {result.url}: {result.status_code} ({result.response_time:.2f}s)")
+        print(f"\nStats: {fetcher.get_stats()}")
+
+if __name__ == '__main__':
+    asyncio.run(http_fetcher_example())
+```
+
+**Logging:**  
+All activity is logged to both the console and `fetcher.log`, including warnings, errors, and retry attempts.
+
+**Summary:**  
+AsyncFetcher is a practical demonstration of advanced async programming, error handling, and logging in Python.  
+It’s ideal for learning about real-world concurrency, resource management, and robust HTTP client design.
+
+---
+
 
 More advanced Python concepts will be added soon.  
 Feel free to explore, modify, and experiment with the code as you deepen your understanding of Python!
