@@ -8,8 +8,8 @@ async def http_fetcher_example():
         HTTPRequest("https://httpbin.org/delay/1"),
         HTTPRequest("https://httpbin.org/status/200"),
         HTTPRequest("https://httpbin.org/json"),
-        HTTPRequest("https://httpbin.org/status/404"),  # Will fail
-        HTTPRequest("https://httpbin.org/status/500"),  # Will retry
+        # HTTPRequest("https://httpbin.org/status/404"),  # Will fail
+        # HTTPRequest("https://httpbin.org/status/500"),  # Will retry
     ]
 
     async with AsyncHTTPFetcher(max_concurrent=3) as fetcher:

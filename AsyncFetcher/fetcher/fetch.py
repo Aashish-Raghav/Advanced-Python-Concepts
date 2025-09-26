@@ -6,6 +6,11 @@ from .logging import logger
 from .dataclass import HTTPRequest, HTTPResponse
 
 
+async def simple_coroutine():
+    await asyncio.sleep(0.1)
+    return "Result from simple Coroutine"
+
+
 class AsyncHTTPFetcher:
 
     def __init__(self, max_concurrent: int = 10, default_timeout: float = 10.09):
