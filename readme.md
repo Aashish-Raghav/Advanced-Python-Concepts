@@ -12,7 +12,8 @@ Each section introduces a new topic, explains its significance, and provides pra
 4. [Data Processing Library Example](#4-data-processing-library-example)
 5. [Asyncio](#5-asyncio)
 6. [Async Fetcher Library Example](#6-asyncfetcher-asynchronous-http-fetching-library)
-7. More topics coming soon...
+7. [AioHttp](#7-aiohttp-asynchronous-http-client-and-server-library)
+8. More topics coming soon...
 
 ---
 
@@ -391,6 +392,65 @@ For detailed documentation, usage examples, and testing instructions, see the [A
 
 **Additional Resources:**
 - [Async or AsyncFetcher Artifact](https://claude.ai/public/artifacts/834b6937-c174-4fea-bc50-26191cf38cfb)
+
+---
+
+## 7. Aiohttp: Asynchronous HTTP Client and Server Library
+
+**What is Aiohttp?**  
+Aiohttp is a Python library for building asynchronous HTTP clients and servers. It leverages `asyncio` to handle high-performance, non-blocking I/O operations, making it ideal for scalable web applications and APIs.
+
+**What we've covered in code:**
+
+### Client-Side Features
+
+- **Basics of Aiohttp Client:**  
+  - Demonstrates how to use `aiohttp.ClientSession` for making HTTP GET and POST requests.
+  - Shows proper session management using `async with` for resource cleanup.
+  *See: [`Aiohttp/ClientSide/basics.py`](Aiohttp/ClientSide/basics.py)*
+
+- **Timeouts and Connection Management:**  
+  - Configures `ClientTimeout` for granular timeout control (e.g., total, connect, read).
+  - Uses `TCPConnector` to manage connection pooling, DNS caching, and keep-alive settings.
+  *See: [`Aiohttp/ClientSide/TimeoutAndConnector.py`](Aiohttp/ClientSide/TimeoutAndConnector.py)*
+
+- **Streaming Responses:**  
+  - Demonstrates how to handle large responses efficiently using streaming.
+  - Compares blocking and non-blocking file writes with `aiofiles` for better performance.
+  *See: [`Aiohttp/ClientSide/streaming.py`](Aiohttp/ClientSide/streaming.py)*
+
+- **Error Handling and Retries:**  
+  - Implements robust error handling for timeouts, connection errors, and HTTP errors.
+  - Adds retry logic with exponential backoff for transient failures.
+  *See: [`Aiohttp/ClientSide/exceptions.py`](Aiohttp/ClientSide/exceptions.py)*
+
+### Server-Side Features
+
+- **Coming Soon:**  
+  The `ServerSide/` folder will include examples for building asynchronous HTTP servers with Aiohttp, including routing, middleware, and WebSocket support.
+
+---
+
+### How to Run Demos
+
+1. Install the required dependencies:
+   ```bash
+   pip install aiohttp aiofiles
+   ```
+
+2. Run the desired script:
+   ```bash
+   python Aiohttp/ClientSide/basics.py
+   python Aiohttp/ClientSide/TimeoutAndConnector.py
+   python Aiohttp/ClientSide/streaming.py
+   python Aiohttp/ClientSide/exceptions.py
+   ```
+
+---
+
+### Summary
+
+Aiohttp is a powerful library for building asynchronous HTTP clients and servers. It provides fine-grained control over connection management, timeouts, and streaming, making it ideal for high-performance and scalable applications. The examples in this repository demonstrate how to use Aiohttp effectively for various client-side use cases, with server-side examples coming soon.
 
 ---
 
