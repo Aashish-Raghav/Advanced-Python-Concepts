@@ -414,10 +414,12 @@ Aiohttp is a Python library for building asynchronous HTTP clients and servers. 
   - Uses `TCPConnector` to manage connection pooling, DNS caching, and keep-alive settings.
   *See: [`Aiohttp/ClientSide/TimeoutAndConnector.py`](Aiohttp/ClientSide/TimeoutAndConnector.py)*
 
-- **Streaming Responses:**  
-  - Demonstrates how to handle large responses efficiently using streaming.
-  - Compares blocking and non-blocking file writes with `aiofiles` for better performance.
-  *See: [`Aiohttp/ClientSide/streaming.py`](Aiohttp/ClientSide/streaming.py)*
+- **Streaming Responses (Upload and Download):**  
+  - Demonstrates how to handle large file uploads and downloads efficiently using streaming.
+  - Uses `aiohttp` for non-blocking I/O and `aiofiles` for asynchronous file operations.
+  - Includes a local `temp_server.py` to simulate upload and download scenarios, avoiding reliance on external services like `httpbin.org` (which can be slow and unreliable).
+  *See: [`Aiohttp/ClientSide/streaming.py`](Aiohttp/ClientSide/streaming.py)*  
+  *See: [`Aiohttp/ClientSide/temp_server.py`](Aiohttp/ClientSide/temp_server.py)*
 
 - **Error Handling and Retries:**  
   - Implements robust error handling for timeouts, connection errors, and HTTP errors.
@@ -438,7 +440,12 @@ Aiohttp is a Python library for building asynchronous HTTP clients and servers. 
    pip install aiohttp aiofiles
    ```
 
-2. Run the desired script:
+2. Start the temporary server for streaming tests:
+   ```bash
+   python Aiohttp/ClientSide/temp_server.py
+   ```
+
+3. Run the desired client-side script:
    ```bash
    python Aiohttp/ClientSide/basics.py
    python Aiohttp/ClientSide/TimeoutAndConnector.py
@@ -450,7 +457,7 @@ Aiohttp is a Python library for building asynchronous HTTP clients and servers. 
 
 ### Summary
 
-Aiohttp is a powerful library for building asynchronous HTTP clients and servers. It provides fine-grained control over connection management, timeouts, and streaming, making it ideal for high-performance and scalable applications. The examples in this repository demonstrate how to use Aiohttp effectively for various client-side use cases, with server-side examples coming soon.
+Aiohttp is a powerful library for building asynchronous HTTP clients and servers. It provides fine-grained control over connection management, timeouts, and streaming, making it ideal for high-performance and scalable applications. The examples in this repository demonstrate how to use Aiohttp effectively for various client-side use cases, including file uploads, downloads, and error handling. A local `temp_server.py` is included to simulate server behavior for reliable testing.
 
 ---
 
