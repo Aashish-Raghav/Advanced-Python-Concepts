@@ -419,18 +419,30 @@ Aiohttp is a Python library for building asynchronous HTTP clients and servers. 
   - Uses `aiohttp` for non-blocking I/O and `aiofiles` for asynchronous file operations.
   - Includes a local `temp_server.py` to simulate upload and download scenarios, avoiding reliance on external services like `httpbin.org` (which can be slow and unreliable).
   *See: [`Aiohttp/ClientSide/streaming.py`](Aiohttp/ClientSide/streaming.py)*  
-  *See: [`Aiohttp/ClientSide/temp_server.py`](Aiohttp/ClientSide/temp_server.py)*
+  *See: [`Aiohttp/ServerSide/streaming_server.py`](Aiohttp/ServerSide/streaming_server.py)*
+
 
 - **Error Handling and Retries:**  
   - Implements robust error handling for timeouts, connection errors, and HTTP errors.
   - Adds retry logic with exponential backoff for transient failures.
   *See: [`Aiohttp/ClientSide/exceptions.py`](Aiohttp/ClientSide/exceptions.py)*
 
+- **WebSocket Client:**  
+  - Demonstrates how to create a WebSocket client using `aiohttp.ClientSession`.
+  - Handles reconnection logic, message sending, and listening for server responses.
+  *See: [`Aiohttp/ClientSide/WebSocket.py`](Aiohttp/ClientSide/WebSocket.py)*
+
 ### Server-Side Features
 
-- **Coming Soon:**  
-  The `ServerSide/` folder will include examples for building asynchronous HTTP servers with Aiohttp, including routing, middleware, and WebSocket support.
+- **Streaming Server:**  
+  - Implements endpoints for file upload and download using streaming.
+  - Simulates real-world scenarios with chunked data transfer and asynchronous processing.
+  *See: [`Aiohttp/ServerSide/streaming_server.py`](Aiohttp/ServerSide/streaming_server.py)*
 
+- **WebSocket Server:**  
+  - Demonstrates how to create a WebSocket server using `aiohttp.web`.
+  - Handles bidirectional communication with clients, including echoing messages and error handling.
+  *See : [`Aiohttp/ServerSide/web_socket_server.py`](Aiohttp/ServerSide/web_socket_server.py)*
 ---
 
 ### How to Run Demos
@@ -440,9 +452,10 @@ Aiohttp is a Python library for building asynchronous HTTP clients and servers. 
    pip install aiohttp aiofiles
    ```
 
-2. Start the temporary server for streaming tests:
+2. Start the temporary servers for testing:
    ```bash
-   python Aiohttp/ClientSide/temp_server.py
+   python Aiohttp/ServerSide/streaming_server.py
+   python Aiohttp/ServerSide/web_socket_server.py
    ```
 
 3. Run the desired client-side script:
